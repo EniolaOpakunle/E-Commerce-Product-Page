@@ -7,16 +7,15 @@ import cartImg from "../assets/icon-cart.svg";
 import minusImg from "../assets/icon-minus.svg";
 import plusImg from "../assets/icon-plus.svg";
 import Lightbox from "../components/Lightbox";
+import { useOutletContext } from "react-router-dom";
 
 function Display() {
   const images = [productImg1,productImg2,productImg3,productImg4]
-  const [imgName, setImgName] = useState(productImg1);
   const [number, setNumber] = useState(0);
   const [Index, setIndex] = useState(0)
   const handleImgChange = (image) => {
     setIndex(images.indexOf(image))
     console.log(images.indexOf(image))
-    setImgName(image);
   };
   const handleIncreaseNum = () => {
     let num = number + 1;
@@ -30,7 +29,6 @@ function Display() {
     <div className="w-[1400px] px-14">
       <div className="flex mt-[100px] px-10 justify-between">
         <div className="flex flex-col gap-y-5">
-          {/* <img src={imgName} alt="" className=" h-[350px] rounded-lg" /> */}
           <Lightbox images = {images} imgName= {Index}/>
           <div className="flex gap-x-2">
             <img

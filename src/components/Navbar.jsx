@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import cartImg from "../assets/icon-cart.svg";
 import avatar from "../assets/image-avatar.png";
+import { useOutletContext } from "react-router-dom";
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen)
+  };
+
   return (
     <div className="fixed top-0 px-14">
       <div className="  flex px-10 py-5 justify-between items-center w-[1400px]  m-auto border-b-2">
@@ -31,15 +39,12 @@ function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-x-6">
-          <select name="" id="" value={'hii'}>
-            {/* <option value=""></option>
-             */}
-             <img src={cartImg} alt="" className="w-[25px] h-[25px]" />
-            {/* <option value="">hi</option> */}
-          </select>
-          {/* <button className=" bg-white hover:border-white">
+          <button className=" bg-white hover:border-white" onClick={() => toggleDropdown()}>
             <img src={cartImg} alt="" className="w-[25px] h-[25px]" />
-          </button> */}
+          </button>
+          {isOpen && (
+            <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">hello world</div>
+          )}
           <button className=" bg-white hover:border-white">
             <img
               src={avatar}
