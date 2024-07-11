@@ -12,7 +12,10 @@ function Display() {
   const images = [productImg1,productImg2,productImg3,productImg4]
   const [imgName, setImgName] = useState(productImg1);
   const [number, setNumber] = useState(0);
+  const [Index, setIndex] = useState(0)
   const handleImgChange = (image) => {
+    setIndex(images.indexOf(image))
+    console.log(images.indexOf(image))
     setImgName(image);
   };
   const handleIncreaseNum = () => {
@@ -28,7 +31,7 @@ function Display() {
       <div className="flex mt-[100px] px-10 justify-between">
         <div className="flex flex-col gap-y-5">
           {/* <img src={imgName} alt="" className=" h-[350px] rounded-lg" /> */}
-          <Lightbox images = {images}/>
+          <Lightbox images = {images} imgName= {Index}/>
           <div className="flex gap-x-2">
             <img
               src={productImg1}

@@ -1,9 +1,9 @@
 // src/components/Lightbox.js
 import React, { useState } from 'react';
 
-const Lightbox = ({ images }) => {
+const Lightbox = ({ images, imgName }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(imgName);
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
@@ -26,10 +26,10 @@ const Lightbox = ({ images }) => {
     <div>
       <div className="grid grid-cols-1 gap-4">
         <img
-          src={images[0]}
+          src={images[imgName]}
           alt={`Thumbnail 0`}
           className="cursor-pointer w-[540px] h-[350px] rounded-lg"
-          onClick={() => openLightbox(0)}
+          onClick={() => openLightbox(imgName)}
         />
       </div>
 
