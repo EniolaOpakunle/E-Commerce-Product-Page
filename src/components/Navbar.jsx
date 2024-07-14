@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
 import cartImg from "../assets/icon-cart.svg";
 import avatar from "../assets/image-avatar.png";
 import { useOutletContext } from "react-router-dom";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const productObj = JSON.parse(localStorage.getItem("product")) || [];
+    setProducts(productObj);
+    // console.log(products)
+  }, []);
 
+  console.log(products);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen)
+    console.log(isOpen);
   };
 
   return (
@@ -35,20 +42,37 @@ function Navbar() {
             <a href="#" className="text-gray-400 hover:text-orange-500">
               Contact
             </a>
-    
           </div>
         </div>
         <div className="flex items-center gap-x-6">
-          <button className=" bg-white hover:border-white" onClick={() => toggleDropdown()}>
+          <button
+            className=" bg-white hover:border-white"
+            onClick={() => toggleDropdown()}
+          >
             <img src={cartImg} alt="" className="w-[25px] h-[25px]" />
           </button>
           {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-[300px] w-[270px] h-[200px] py-5 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-              <div   className="border-b-2">
-              <p className="px-5 py-2">Cart</p>
+            <div className="origin-top-right absolute right-0 mt-[300px] w-[320px] h-[200px] py-5 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div className="border-b-2">
+                <p className="px-5 py-2">Cart</p>
               </div>
-              <div className="flex justify-center">
-                <p className="">Your cart is empty</p>
+              <div className="p-5 gap-3 flex flex-col">
+                <div className="flex ">
+                  <p>
+                    <img
+                      src={products.img}
+                      alt=""
+                      className="w-[50px] rounded-lg"
+                    />
+                  </p>
+                  <p className="ml-1 flex flex-col">
+                    <span>{products.name}</span>
+                    <span>{products.price} * {products.quantity} <b>{products.totalPrice}</b></span>
+                  </p>
+                </div>
+                <div className="">
+                <button className="bg-orange-500 px-9 flex gap-x-2 justify-center w-[280px]">Checkout</button>
+                </div>
               </div>
             </div>
           )}

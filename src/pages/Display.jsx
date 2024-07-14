@@ -25,6 +25,17 @@ function Display() {
     let num = number - 1;
     setNumber(num);
   };
+  const handleAddCart = () =>{
+    const productObj = {
+      img: productImg1,
+      name:'Fall Limited Edition Sneakers',
+      price: '$125.00',
+      quantity:number,
+      totalPrice:number*125.00,
+    }
+    localStorage.setItem('product',JSON.stringify(productObj))
+    console.log(productObj)
+  }
   return (
     <div className="w-[1400px] px-14">
       <div className="flex mt-[100px] px-10 justify-between">
@@ -89,7 +100,7 @@ function Display() {
               </button>
             </div>
             <div>
-              <button className="bg-orange-500 px-9 flex gap-x-2 items-center">
+              <button className="bg-orange-500 px-9 flex gap-x-2 items-center" onClick={() => handleAddCart()}>
                 <img src={cartImg} alt="" className="" />
                 <span>Add to cart</span>
               </button>
