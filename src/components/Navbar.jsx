@@ -43,7 +43,14 @@ function Navbar() {
             <img src={cartImg} alt="" className="w-[25px] h-[25px]" />
           </button>
           {isOpen && (
-            <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">hello world</div>
+            <div className="origin-top-right absolute right-0 mt-[300px] w-[270px] h-[200px] py-5 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div   className="border-b-2">
+              <p className="px-5 py-2">Cart</p>
+              </div>
+              <div className="flex justify-center">
+                <p className="">Your cart is empty</p>
+              </div>
+            </div>
           )}
           <button className=" bg-white hover:border-white">
             <img
