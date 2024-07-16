@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
-import { Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar'
+import React, { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function RootLayout() {
   
+
   return (
     <div>
-        <Navbar/>
-        <Outlet/>
+      <Navbar/>
+      <Outlet/>
     </div>
-  )
+  );
 }
 
-export default RootLayout
+export default RootLayout;
