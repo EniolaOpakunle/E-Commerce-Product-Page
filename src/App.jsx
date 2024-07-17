@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<RootLayout/>}>
+        {/* <Route element={<RootLayout/>}> */}
           <Route
             path="/"
             element={
@@ -18,7 +18,7 @@ function App() {
               </Suspense>
             }
           />
-        </Route>
+        {/* </Route> */}
       </Routes>
       {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
     </>
