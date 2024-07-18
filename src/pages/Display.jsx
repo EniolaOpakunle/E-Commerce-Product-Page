@@ -88,19 +88,19 @@ function Display() {
                     <img src={closeImg} alt="" onClick={toggleNav} />
                   </div>
                   <div className="mt-10 flex flex-col gap-y-4">
-                    <a href="#" className="text-lg text-black font-[700]">
+                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
                       Collections
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]">
+                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
                       Men
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]">
+                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
                       Women
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]">
+                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
                       About
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]">
+                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
                       Contact
                     </a>
                   </div>
