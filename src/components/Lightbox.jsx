@@ -4,7 +4,6 @@ const Lightbox = ({ images, imgName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(imgName);
 
-  console.log(currentIndex)
   const openLightbox = (index) => {
     setCurrentIndex(index);
     setIsOpen(true);
