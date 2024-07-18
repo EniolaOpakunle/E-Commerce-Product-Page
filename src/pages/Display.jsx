@@ -104,7 +104,8 @@ function Display() {
                 <div className="border-b-2">
                   <p className="px-5 py-2">Cart</p>
                 </div>
-                <div className="p-5 gap-3 flex flex-col ">
+                {products.quantity && (
+                  <div className="p-5 gap-3 flex flex-col ">
                   <div className="flex items-center justify-center">
                     <img
                       src={products.img}
@@ -132,6 +133,12 @@ function Display() {
                     Checkout
                   </button>
                 </div>
+                )}
+                {!products.quantity && (
+                  <div className="flex justify-center items-center">
+                    <p>Your cart is empty</p>
+                  </div>
+                )}
               </div>
             )}
             <button className="bg-white hover:border-white">
