@@ -32,7 +32,7 @@ function Display() {
   );
   const handleDeleteCart = () => {
     setProducts([]);
-    localStorage.setItem("products", JSON.stringify([]));
+    localStorage.setItem("products", JSON.stringify(products));
   };
 
   const toggleDropdown = () => {
@@ -122,7 +122,7 @@ function Display() {
                     <img
                       src={deleteImg}
                       alt=""
-                      className="w-3 h-5 ml-2"
+                      className="w-3 h-5 ml-2 cursor-pointer"
                       onClick={handleDeleteCart}
                     />
                   </div>
