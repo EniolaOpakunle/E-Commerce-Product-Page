@@ -3,17 +3,26 @@ import productImg1 from "../assets/image-product-1.jpg";
 import productImg2 from "../assets/image-product-2.jpg";
 import productImg3 from "../assets/image-product-3.jpg";
 import productImg4 from "../assets/image-product-4.jpg";
+import productImg1Thum from "../assets/image-product-1-thumbnail.jpg";
+import productImg2Thum from "../assets/image-product-2-thumbnail.jpg";
+import productImg3Thum from "../assets/image-product-3-thumbnail.jpg";
+import productImg4Thum from "../assets/image-product-4-thumbnail.jpg";
 import cartImg from "../assets/icon-cart.svg";
 import minusImg from "../assets/icon-minus.svg";
 import plusImg from "../assets/icon-plus.svg";
 import Lightbox from "../components/Lightbox";
 import logo from "../assets/logo.svg";
-// import cartImg from "../assets/icon-cart.svg";
 import avatar from "../assets/image-avatar.png";
 import deleteImg from "../assets/icon-delete.svg";
 import menuImg from "../assets/icon-menu.svg";
 
 function Display() {
+  const imagesThum = [
+    productImg1Thum,
+    productImg2Thum,
+    productImg3Thum,
+    productImg4Thum,
+  ];
   const images = [productImg1, productImg2, productImg3, productImg4];
   const [number, setNumber] = useState(0);
   const [index, setIndex] = useState(0);
@@ -28,10 +37,6 @@ function Display() {
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleImgChange = (image) => {
-    setIndex(images.indexOf(image));
   };
 
   const handleIncreaseNum = () => {
@@ -50,28 +55,26 @@ function Display() {
       quantity: number,
       totalPrice: number * 125.0,
     };
-    setProducts(productObj)
-    // let products = JSON.parse(localStorage.getItem("products")) || [];
-    // products.push(productObj);
+    setProducts(productObj);
   };
-  useEffect(() =>{
+  useEffect(() => {
     localStorage.setItem("products", JSON.stringify(products));
-  },[products])
+  }, [products]);
 
   return (
-    <div className=" lg:px-14">
+    <div className="">
       {/* navbar starts here */}
-      <div className="fixed w-full top-0 lg:px-14 bg-white z-10">
-        <div className="flex lg:px-10 lg:py-5 justify-between items-center w-full m-auto lg:border-b-2">
-          <div className="flex justify-between items-center lg:gap-x-12">
-            <button className="text-[#330111] lg:hidde">
+      <div className="fixed w-full top-0 bg-white z-10 lg:px-20 lg:py-4">
+        <div className="flex justify-between items-center w-full m-auto lg:border-b-2">
+          <div className="flex justify-between items-center lg:gap-x-20">
+            <button className="text-[#330111] lg:hidden">
               <img src={menuImg} alt="" className="lg:hidden" />
             </button>
 
             <a href="">
               <img src={logo} alt="sneakers" />
             </a>
-            <div className="hidden lg:flex gap-x-6">
+            <div className="hidden lg:flex gap-x-10">
               <a href="#" className="text-gray-400 hover:text-orange-500">
                 Collection
               </a>
@@ -89,7 +92,7 @@ function Display() {
               </a>
             </div>
           </div>
-          <div className="flex items-center lg:gap-x-6">
+          <div className="flex items-center">
             <button
               className="bg-white hover:border-white"
               onClick={toggleDropdown}
@@ -102,7 +105,6 @@ function Display() {
                   <p className="px-5 py-2">Cart</p>
                 </div>
                 <div className="p-5 gap-3 flex flex-col ">
-                  {/* {products.map((product, index) => ( */}
                   <div className="flex items-center justify-center">
                     <img
                       src={products.img}
@@ -123,7 +125,6 @@ function Display() {
                       onClick={handleDeleteCart}
                     />
                   </div>
-                  {/* ))} */}
                   <button
                     className="w-full bg-orange-500 px-9 flex gap-x-2 justify-center lg:w-[280px]"
                     onClick={toggleDropdown}
@@ -144,26 +145,26 @@ function Display() {
         </div>
       </div>
       {/* navbar ends here */}
-      <div className=" lg:flex mt-[70px] lg:px-10 lg:justify-between">
+      <div className="mt-[70px] lg:flex lg:gap-x-32 lg:px-36 lg:justify-between lg:mt-[130px]">
         <div className=" flex flex-col lg:w-1/2">
           <div className="w-full">
             <Lightbox images={images} imgName={index} />
           </div>
-          <div className=" hidden lg:flex lg:gap-x-3">
-            {images.map((image, idx) => (
+          <div className=" hidden lg:flex lg:gap-x-9 -mt-32">
+            {imagesThum.map((image, idx) => (
               <img
                 key={idx}
                 src={image}
                 alt=""
-                className=" lg:w-[140px] rounded-lg"
-                onClick={() => handleImgChange(image)}
+                className="w-1/5 h-3/4 rounded-lg cursor-pointer"
+                onClick={() => setIndex(idx)}
               />
             ))}
           </div>
         </div>
-        <div className="p-4 flex flex-col gap-y-5 mt-10 lg:w-1/2 lg:p-0">
+        <div className="p-4 flex flex-col gap-y-5 mt-10 lg:w-1/2 ">
           <p className="font-[500]">SNEAKER COMPANY</p>
-          <p className="text-4xl lg:text-[45px] font-[700]">
+          <p className="text-4xl lg:text-[45px] font-[700] lg:mb-5">
             Fall Limited Edition Sneakers
           </p>
           <p>
@@ -180,8 +181,8 @@ function Display() {
             </div>
             <p className="line-through">$250.00</p>
           </div>
-          <div className="gap-y-3 flex flex-col lg:flex-row lg:gap-x-3">
-            <div className="w-full flex items-center lg:gap-x-4 lg:px-7 bg-gray-200 rounded-lg justify-between lg:w-0">
+          <div className="gap-y-3 flex flex-col lg:flex-row lg:gap-x-10">
+            <div className="flex items-center lg:gap-x-4 lg:px-7 bg-gray-200 rounded-lg justify-between">
               <button
                 onClick={handleDecreaseNum}
                 className="bg-gray-200 hover:border-gray-200"
@@ -197,7 +198,7 @@ function Display() {
               </button>
             </div>
             <button
-              className="w-full bg-orange-500 lg:px-9 flex gap-x-2 justify-center items-center lg-0"
+              className=" bg-orange-500 lg:px-20 flex gap-x-2 justify-center items-center"
               onClick={handleAddCart}
             >
               <img src={cartImg} alt="" className="" />

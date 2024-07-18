@@ -1,10 +1,10 @@
-// src/components/Lightbox.js
 import React, { useState } from "react";
 
 const Lightbox = ({ images, imgName }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(imgName);
 
+  console.log(currentIndex)
   const openLightbox = (index) => {
     setCurrentIndex(index);
     setIsOpen(true);
@@ -34,7 +34,13 @@ const Lightbox = ({ images, imgName }) => {
         <img
           src={images[currentIndex]}
           alt={`Thumbnail 0`}
-          className=" cursor-pointer lg:w-5/6 h-3/4 lg:rounded-lg"
+          className=" cursor-pointer lg:w-full h-3/4 lg:rounded-lg lg:hidden"
+          onClick={() => openLightbox(imgName)}
+        />
+        <img
+          src={images[imgName]}
+          alt={`Thumbnail 0`}
+          className="hidden cursor-pointer lg:w-full h-3/4 lg:rounded-lg lg:block"
           onClick={() => openLightbox(imgName)}
         />
         <button
@@ -47,7 +53,7 @@ const Lightbox = ({ images, imgName }) => {
 
       {isOpen && (
         <div className="hidden fixed inset-0 lg:flex items-center justify-center bg-black bg-opacity-75 z-50">
-          <div className="relative">
+          <div className="relative h-3/4">
             <button
               className="absolute top-0 bg-transparent right-0 mt-4 mr-4 text-2xl"
               onClick={closeLightbox}
