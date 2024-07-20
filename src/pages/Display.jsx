@@ -88,19 +88,39 @@ function Display() {
                     <img src={closeImg} alt="" onClick={toggleNav} />
                   </div>
                   <div className="mt-10 flex flex-col gap-y-4">
-                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
+                    <a
+                      href="#"
+                      className="text-lg text-black font-[700]"
+                      onClick={toggleNav}
+                    >
                       Collections
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
+                    <a
+                      href="#"
+                      className="text-lg text-black font-[700]"
+                      onClick={toggleNav}
+                    >
                       Men
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
+                    <a
+                      href="#"
+                      className="text-lg text-black font-[700]"
+                      onClick={toggleNav}
+                    >
                       Women
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
+                    <a
+                      href="#"
+                      className="text-lg text-black font-[700]"
+                      onClick={toggleNav}
+                    >
                       About
                     </a>
-                    <a href="#" className="text-lg text-black font-[700]" onClick={toggleNav}>
+                    <a
+                      href="#"
+                      className="text-lg text-black font-[700]"
+                      onClick={toggleNav}
+                    >
                       Contact
                     </a>
                   </div>
@@ -130,12 +150,23 @@ function Display() {
             </div>
           </div>
           <div className="flex items-center">
-            <button
+            {products.quantity && (
+              <button
               className="bg-white hover:border-white"
               onClick={toggleDropdown}
             >
+              <span className="absolute text-orange-500 -mt-3 ml-3">{products.quantity}</span>
               <img src={cartImg} alt="" className="w-[25px] h-[25px]" />
             </button>
+            )}
+            {!products.quantity && (
+              <button
+                className="bg-white hover:border-white"
+                onClick={toggleDropdown}
+              >
+                <img src={cartImg} alt="" className="w-[25px] h-[25px]" />
+              </button>
+            )}
             {isOpen && (
               <div className="origin-top-right absolute right-0 mt-[400px] lg:mt-[300px] w-full lg:w-[320px]  lg:h-[200px] px-0.5 lg:px-0  z-20">
                 <div className="py-5 rounded-md shadow-lg bg-white  ring-1 ring-black ring-opacity-5">
